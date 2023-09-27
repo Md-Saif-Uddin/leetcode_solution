@@ -34,11 +34,10 @@ class Solution {
         ListNode oneJump = node;
         ListNode doubleJump = node;
 
-        do{
+        while(doubleJump != null && doubleJump.next != null){
             oneJump = oneJump.next;
             doubleJump = doubleJump.next.next;
-        }while(doubleJump != null && doubleJump.next != null);
-
+        }
         return oneJump;
     }
 
