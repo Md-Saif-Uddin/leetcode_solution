@@ -1,0 +1,51 @@
+https://leetcode.com/problems/rotate-list/description/
+//1st try
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        
+        if(head == null || head.next == null || k<1) return head;
+
+        ListNode totalNodes = head;
+        int size = 0;
+        while(totalNodes != null){
+            size++;
+            totalNodes = totalNodes.next;
+            
+        }
+
+        if(k > size){
+            k = k % size;
+        }
+
+        while(k > 0){
+            ListNode prev = null;
+            ListNode current = head;
+
+            while(true){
+                prev = current;
+                current = current.next;
+
+                if(current.next == null){
+                    prev.next = null;
+                    current.next = head;
+                    head = current;
+                    break;
+                }
+
+            }
+            k--;
+        }
+        return head;
+        
+    }
+}
