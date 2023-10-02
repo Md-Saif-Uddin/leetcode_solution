@@ -1,0 +1,22 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+
+        //run till u can get ans thats why i substracted needle length
+        for(int i = 0; i <= haystack.length() - needle.length(); i++){
+
+            //if 1st occurence find then substring the needle length from haystack and store in split and match to needle whether it is same or not 
+            if(haystack.charAt(i) == needle.charAt(0)){
+                int start = i;
+                int end = i + needle.length();
+                if(end > haystack.length()){
+                    break;
+                }else{
+                    String split = haystack.substring(i,end);
+                    if(needle.equals(split)) return i;
+                }
+            }
+        }
+
+        return -1;
+    }
+}
