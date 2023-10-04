@@ -1,0 +1,40 @@
+//   https://leetcode.com/problems/unique-paths-ii/
+
+class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int sum = 0;
+
+        int r = obstacleGrid.length-1;
+        int c = obstacleGrid[0].length-1;
+
+        int[][] dp = new int[r+1][c+1];
+
+        sum = paths(obstacleGrid, r, c, dp);
+        return sum;   
+    }
+
+    public int paths(int[][] block, int row, int col, int[][] dp){
+        int down = 0;
+        int right = 0;
+        if(block[row][col] == 1){
+            return 0;
+        }
+
+        if(dp[row][col] != 0){
+            return dp[row][col];
+        }
+
+        if(row == 0 && col == 0) return 1;
+
+        if(row > 0){
+            down = paths(block, row-1, col, dp);
+        }
+
+        if(col > 0){
+            right = paths(block, row, col-1, dp);
+        }
+
+        dp[row][col] = down + right;
+        return down + right;
+    }
+}
