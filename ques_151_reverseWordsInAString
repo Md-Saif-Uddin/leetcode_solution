@@ -1,0 +1,21 @@
+/*  https://leetcode.com/problems/reverse-words-in-a-string/description/  */
+
+
+class Solution {
+    public String reverseWords(String s) {
+        //removing space from both ends by trim() method
+        //replacing more than one space to one space by replaceAll() method
+        s=s.trim().replaceAll("\\s{2,}", " ");
+        String[] str=s.split(" ");
+        String result="";
+        for(int i=str.length-1; i>=0;i--){
+            if(i!=0){
+
+                result+= str[i]+" ";
+            }else{
+                result+=str[i];
+            }
+        }
+        return result;
+    }
+}
