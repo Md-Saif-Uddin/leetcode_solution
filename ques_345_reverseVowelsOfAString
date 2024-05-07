@@ -1,0 +1,42 @@
+/*  https://leetcode.com/problems/reverse-vowels-of-a-string/description/  */
+
+
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        i, j, s= 0, len(s)-1, list(s)
+        vowels='aeiouAEIOU'
+        while(i<j):
+            if s[i] in vowels and s[j] in vowels:
+                s[i],s[j]=s[j],s[i]  
+                i += 1
+                j -= 1 
+            i += s[i] not in vowels
+            j -= s[j] not in vowels
+        return "".join(s)
+
+
+# class Solution:
+#     def reverseVowels(self, s: str) -> str:
+#         t=list(s)
+#         first=False
+#         last=False
+#         i=0
+#         j=len(s)-1
+#         vowels="aeiouAEIOU"
+#         while(i<=j):
+#             if t[i] in vowels:
+#                 first=True
+            
+#             if t[j] in vowels:
+#                 last=True
+#             if first and last:
+#                 t[i],t[j]=t[j],t[i]
+#                 first=False
+#                 last=False
+#             if first==False:
+#                 i+=1
+#             if last==False:
+#                 j-=1
+#         if first and last:
+#             t[i],t[j]=t[j],t[i]
+#         return "".join(t)
