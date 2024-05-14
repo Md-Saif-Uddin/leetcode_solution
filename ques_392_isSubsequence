@@ -1,0 +1,20 @@
+/*  https://leetcode.com/problems/is-subsequence/description/?envType=study-plan-v2&envId=leetcode-75  */
+
+
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        if(t.length() < s.length()) return false;
+        
+        int lenS=0;
+
+        for(int i=0;i<t.length();i++){
+            if(lenS >= s.length()) break;
+            if((s.charAt(lenS))==(t.charAt(i))){
+                lenS++;
+            }
+        }
+
+        if(lenS>=s.length()) return true;
+        return false;
+    }
+}
