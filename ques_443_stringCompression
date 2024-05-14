@@ -1,0 +1,30 @@
+/*  https://leetcode.com/problems/string-compression/description/?envType=study-plan-v2&envId=leetcode-75  */
+
+
+class Solution {
+    public int compress(char[] chars) {
+        if(chars.length==1) return 1;
+        int count=1;
+        String s="";
+        s+=chars[0];
+        for(int i=1;i<chars.length;i++){
+            if(chars[i]!=chars[i-1]){
+                if(count>1){
+                    s+=count;
+                }
+                s+=chars[i];
+                count=1;
+                continue;
+            }
+            count++;
+        }
+
+        if(count>1) s+=count;
+
+        for(int i=0;i<s.length();i++){
+            chars[i]=s.charAt(i);
+        }
+
+        return s.length();
+    }
+}
