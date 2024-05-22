@@ -1,0 +1,29 @@
+/*  https://leetcode.com/problems/max-consecutive-ones-iii/?envType=study-plan-v2&envId=leetcode-75  */
+
+
+
+//consider loop i is the last index 
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+        int startIndex = 0;
+        int max=0;
+
+        for(int i=0; i<nums.length; i++){
+            if(k>0){
+                if(nums[i]==0){
+                    k--;
+                }
+            }else{
+                if(nums[i]==0){
+                    k--;
+                    while(k<0){
+                        if(nums[startIndex]==0) k++;
+                        startIndex++;
+                    }
+                }                
+            }
+            max=Math.max(i-startIndex+1,max);
+        }
+        return max;
+    }
+}
