@@ -1,0 +1,43 @@
+/*  https://leetcode.com/problems/find-pivot-index/description/?envType=study-plan-v2&envId=leetcode-75  */
+
+
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int sumRight=0;
+        int sumLeft=0;
+
+        for(int num: nums){
+            sumRight+=num;
+        }
+
+        // sumRight-=nums[0];
+
+        for(int i=0;i<nums.length;i++){
+            sumRight-=nums[i];
+            if(sumRight==sumLeft) return i;
+            else{
+                sumLeft+=nums[i];
+            }
+        }
+
+        return -1;
+    }
+}
+
+
+//In python
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        pref=0
+        suff=0
+
+        for i in nums:
+            suff+=i
+        for i in range(len(nums)):
+            suff-=nums[i]
+            if pref==suff :
+                return i
+            else:
+                pref+=nums[i]
+        return -1
