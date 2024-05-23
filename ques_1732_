@@ -1,0 +1,15 @@
+/*  https://leetcode.com/problems/find-the-highest-altitude/?envType=study-plan-v2&envId=leetcode-75  */
+
+
+
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int max =0;
+        int prev=0;
+        for(int i=0; i<gain.length; i++){
+            prev=gain[i]+prev;
+            max=Math.max(max,prev);
+        }
+        return max;
+    }
+}
