@@ -1,0 +1,76 @@
+/*    https://leetcode.com/problems/unique-number-of-occurrences/description/?envType=study-plan-v2&envId=leetcode-75    /*
+
+
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        arr.sort()
+        storeCount=[]
+        count=1
+        for i in range(1,len(arr)):
+            if(arr[i]!=arr[i-1]):
+                if count not in storeCount:
+                    storeCount.append(count)
+                else: return False
+                count=1
+            else:
+                count+=1
+        if count not in storeCount:
+                    storeCount.append(count)
+        else: return False
+        return True
+
+
+
+  
+
+# class Solution:
+#     def uniqueOccurrences(self, arr: List[int]) -> bool:
+#         arr.sort()
+#         v = []
+
+#         i = 0
+#         while i < len(arr):
+#             cnt = 1
+
+#             # Count occurrences of the current element
+#             while i + 1 < len(arr) and arr[i] == arr[i + 1]:
+#                 cnt += 1
+#                 i += 1
+
+#             v.append(cnt)
+#             i += 1
+
+#         v.sort()
+
+#         for i in range(1, len(v)):
+#             if v[i] == v[i - 1]:
+#                 return False
+
+#         return True
+
+
+
+##Java Code
+# import java.util.HashMap;
+# import java.util.HashSet;
+# import java.util.Map;
+
+# class Solution {
+#     public boolean uniqueOccurrences(int[] arr) {
+#         HashSet<Integer> set = new HashSet<>();
+#         HashMap<Integer, Integer> map = new HashMap<>();
+
+#         for (int num : arr) {
+#             map.put(num, map.getOrDefault(num, 0) + 1);
+#         }
+
+#         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+#             if (set.size() != 0 && set.contains(entry.getValue())) {
+#                 return false;
+#             }
+
+#             set.add(entry.getValue());
+#         }
+#         return true;
+#     }
+# }
